@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using CommandLine;
 using iText.Kernel.Colors;
@@ -17,9 +16,19 @@ namespace PatchPdfText
         {
             Parser.Default.ParseArguments<Options>(args).WithParsed(o =>
             {
-                PdfDocument pdfDoc = new PdfDocument(
-                    new PdfReader(o.InputFile),
-                    new PdfWriter(o.OutputFile));
+                PdfDocument pdfDoc;
+                if (o.File == null)
+                {
+                    pdfDoc = new PdfDocument(
+                        new PdfReader(o.InputFile),
+                        new PdfWriter(o.OutputFile));
+                }
+                else
+                {
+                    pdfDoc = new PdfDocument(
+                        new PdfReader(new MemoryStream(File.ReadAllBytes(o.File))),
+                        new PdfWriter(o.File));
+                }
 
                 Document doc = new Document(pdfDoc);
 
@@ -56,10 +65,13 @@ namespace PatchPdfText
 
         public sealed class Options
         {
-            [Option("input", Required = true, HelpText = "Input PDF file to read from.")]
+            [Option("file", Required = true, SetName = "singleFile", HelpText = "Input and output PDF file to read from and write to.")]
+            public string File { get; set; }
+
+            [Option("input", Required = true, SetName = "twoFiles", HelpText = "Input PDF file to read from.")]
             public string InputFile { get; set; }
 
-            [Option("output", Required = true, HelpText = "Output PDF file to write to.")]
+            [Option("output", Required = true, SetName = "twoFiles", HelpText = "Output PDF file to write to.")]
             public string OutputFile { get; set; }
 
             [Option("text", Required = true, HelpText = "Text to be added to the PDF file.")]
