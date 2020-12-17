@@ -12,6 +12,7 @@ PS> dotnet run -- `
     --font-path C:\Users\astef\AppData\Local\Microsoft\Windows\Fonts\Roboto-Italic.ttf `
     --font-family "Roboto-Italic" `
     --font-size 8 `
+    --page 1 `
     --left 249.8 `
     --bottom 349.15 `
     --width 200 `
