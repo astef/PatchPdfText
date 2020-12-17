@@ -6,6 +6,8 @@ CLI tool to update text in PDF files
 
 Optionally remove the old content using https://github.com/astef/SweepPdfArea.
 
+Then you can put a new text label with this tool:
+
 ```
 PS> dotnet run -- `
     --input .\input.pdf `
