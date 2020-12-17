@@ -6,17 +6,19 @@ CLI tool to update text in PDF files
 
 ```
 PS> dotnet run -- `
-    --input .\inc.pdf `
-    --output .\out.pdf `
-    --text "`$2,0010.00" `
-    --font-path C:\Users\astef\AppData\Local\Microsoft\Windows\Fonts\Roboto-Italic.ttf `
-    --font-family "Roboto-Italic" `
-    --font-size 8 `
+    --input .\input.pdf `
+    --output .\output.pdf `
+    --text "`ACCEPTED" `
+    --font-path $env:LOCALAPPDATA\Microsoft\Windows\Fonts\Roboto-Black.ttf `
+    --font-family "Roboto-Black" `
+    --font-size 24 `
+    --font-color 00FF15 `
     --page 1 `
     --left 249.8 `
     --bottom 349.15 `
     --width 200 `
-    --bg-opacity 0
+    --bg-color 33BB55 `
+    --bg-opacity 0.6
 ```
 
 # Development state
