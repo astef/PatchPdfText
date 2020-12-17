@@ -4,6 +4,8 @@ CLI tool to update text in PDF files
 
 # Usage
 
+Optionally remove the old content using https://github.com/astef/SweepPdfArea.
+
 ```
 PS> dotnet run -- `
     --input .\input.pdf `
